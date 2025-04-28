@@ -56,56 +56,112 @@ var questions = [
         correctOption: '<a href="http://www.w3schools.com">W3Schools</a>',
     },
 ];
+
+let ques = document.getElementById("ques");
+let opt1 = document.getElementById("opt1");
+let opt2 = document.getElementById("opt2");
+let opt3 = document.getElementById("opt3");
+let correct = document.getElementById("correct");
+let btn = document.getElementById("btn");
+let index = 0;
 let result = 0;
-var quiz = document.getElementsByName('quiz')
-var htmlques = document.getElementById('ques')
-var htmlopt1 = document.getElementById('opt1')
-var htmlopt2 = document.getElementById('opt2')
-var htmlopt3 = document.getElementById('opt3')
-var correct = document.getElementById('correct')
-var index = 0
-var getBtn = document.getElementById('btn')
-var score = 0
 
 
-function resultC(){
-    result += 12.5;
-    console.log(result);
-    
-}
-function nextQuestion() {
+function nextQuestion(){
     
     var getInputs = document.getElementsByTagName('input')
+    
+    for (var i = 0; i < getInputs.length; i++) {
+        if (getInputs[i].checked) {
+            if (getInputs[i].nextElementSibling.innerText === questions[index - 1].correctOption) {
+                result += 12.5;
+                console.log(result);
+                
+            }
+        }
+    }
+
+
     for(var i=0; i < getInputs.length; i++){
         getInputs[i].checked = false
     }
-
-    if (index > questions.length - 1) {
+    
+    if(index > questions.length -1){
         Swal.fire({
             title: "Quiz End!",
-            text: "Restart Quiz",
+            text: "Your Scores Is " + result,
             icon: "success"
         });
+    }else{
+    ques.innerText = questions[index].question;
+    opt1.innerText = questions[index].option1;
+    opt2.innerText = questions[index].option2;
+    opt3.innerText = questions[index].option3;
+    correct.innerText = questions[index].correctOption
+    index++
+
     }
     
-    else {
-        htmlques.innerText = questions[index].question
-        htmlopt1.innerText = questions[index].option1
-        htmlopt2.innerText = questions[index].option2
-        htmlopt3.innerText = questions[index].option3
-        correct.innerText = questions[index].correctOption
-        index++
-    }
-
-    getBtn.disabled = true
-
-
+    btn.disabled = true
 }
-
 nextQuestion()
 
-
 function btnWork(){
-   
-    getBtn.disabled = false
+    btn.disabled = false
 }
+
+
+
+// let result = 0;
+// var quiz = document.getElementsByName('quiz')
+// var htmlques = document.getElementById('ques')
+// var htmlopt1 = document.getElementById('opt1')
+// var htmlopt2 = document.getElementById('opt2')
+// var htmlopt3 = document.getElementById('opt3')
+// var correct = document.getElementById('correct')
+// var index = 0
+// var getBtn = document.getElementById('btn')
+// var score = 0
+
+
+// function resultC(){
+//     result += 12.5;
+//     console.log(result);
+    
+// }
+// function nextQuestion() {
+    
+//     var getInputs = document.getElementsByTagName('input')
+//     for(var i=0; i < getInputs.length; i++){
+//         getInputs[i].checked = false
+//     }
+
+//     if (index > questions.length - 1) {
+//         Swal.fire({
+//             title: "Quiz End!",
+//             text: "Restart Quiz",
+//             icon: "success"
+//         });
+//     }
+    
+//     else {
+//         htmlques.innerText = questions[index].question
+//         htmlopt1.innerText = questions[index].option1
+//         htmlopt2.innerText = questions[index].option2
+//         htmlopt3.innerText = questions[index].option3
+//         correct.innerText = questions[index].correctOption
+//         index++
+//     }
+
+//     getBtn.disabled = true
+
+
+// }
+
+// nextQuestion()
+
+
+// function btnWork(){
+   
+//     getBtn.disabled = false
+// }
