@@ -56,22 +56,29 @@ var questions = [
         correctOption: '<a href="http://www.w3schools.com">W3Schools</a>',
     },
 ];
-
+let result = 0;
+var quiz = document.getElementsByName('quiz')
 var htmlques = document.getElementById('ques')
 var htmlopt1 = document.getElementById('opt1')
 var htmlopt2 = document.getElementById('opt2')
 var htmlopt3 = document.getElementById('opt3')
+var correct = document.getElementById('correct')
 var index = 0
 var getBtn = document.getElementById('btn')
 var score = 0
 
-function nextQuestion() {
 
+function resultC(){
+    result += 12.5;
+    console.log(result);
+    
+}
+function nextQuestion() {
+    
     var getInputs = document.getElementsByTagName('input')
     for(var i=0; i < getInputs.length; i++){
         getInputs[i].checked = false
     }
-
 
     if (index > questions.length - 1) {
         Swal.fire({
@@ -80,11 +87,13 @@ function nextQuestion() {
             icon: "success"
         });
     }
+    
     else {
         htmlques.innerText = questions[index].question
         htmlopt1.innerText = questions[index].option1
         htmlopt2.innerText = questions[index].option2
         htmlopt3.innerText = questions[index].option3
+        correct.innerText = questions[index].correctOption
         index++
     }
 
