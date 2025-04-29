@@ -62,6 +62,7 @@ let opt1 = document.getElementById("opt1");
 let opt2 = document.getElementById("opt2");
 let opt3 = document.getElementById("opt3");
 let correct = document.getElementById("correct");
+let correctOpt = document.getElementById("correctOpt");
 let btn = document.getElementById("btn");
 let index = 0;
 let result = 0;
@@ -70,15 +71,9 @@ let result = 0;
 function nextQuestion(){
     
     var getInputs = document.getElementsByTagName('input')
-    
-    for (var i = 0; i < getInputs.length; i++) {
-        if (getInputs[i].checked) {
-            if (getInputs[i].nextElementSibling.innerText === questions[index - 1].correctOption) {
-                result += 12.5;
-                console.log(result);
-                
-            }
-        }
+    if(correctOpt.checked){
+        result += 12.5;
+        console.log(result);
     }
 
 
