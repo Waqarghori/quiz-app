@@ -82,8 +82,7 @@ function nextQuestion() {
     var getInputs = document.getElementsByTagName('input')
     if (correctOpt.checked) {
         score += 12.5;
-        let abc = Math.floor(score)
-        console.log(abc);
+        let abc = Math.floor(score);
     } if (score >= 70) {
         result = "Passed"
         icon = "success"
@@ -146,7 +145,7 @@ function startTimer(){
     }
     getSec.innerText = sec
     getMin.innerHTML = min;
-    console.log("hi");
+
     
 }, 1000)
 }
