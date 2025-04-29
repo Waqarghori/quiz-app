@@ -4,13 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body>
+    <header>
+        <div class="header">My Quiz App</div>
+    </header>
 
-    <section>
+    <section id="quizInt">
         <div id="instructions" class="quiz-instructions">
           <h2 class="quiz-heading">📝 Quiz Instructions</h2>
           <hr class="quiz-divider" />
@@ -32,9 +36,10 @@
     <div class="container">
         <h1>Quiz Application SMIT</h1>
         <hr><br>
-        <div>
+        <div class="timer" id="timer">
             <span class="min">00</span>:<span class="sec">00</span>
-        </div>
+          </div>
+          
         <div>
             <div>
                 <p id="ques"></p>

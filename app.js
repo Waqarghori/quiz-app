@@ -59,7 +59,9 @@ var questions = [
 
 function startQuiz(){
     let startQ = document.querySelector(".container")
-    startQ.
+    let quizIntr = document.getElementById("quizInt")
+    startQ.style.display = "block"
+    quizIntr.style.display = "none"
 }
 
 let ques = document.getElementById("ques");
@@ -101,7 +103,7 @@ function nextQuestion() {
                <em>thanks for participation!</em>
              `,
             icon: icon,
-            confirmButtonText: 'Quiz Again'
+            confirmButtonText: 'Go Back'
         }).then((score) => {
             if (score.isConfirmed) {
                 location.reload();  // Page reload karega
@@ -135,7 +137,7 @@ let timmer = setInterval(function () {
     if (sec > 59) {
         min++
         sec = 0;
-    } if (min >= 5) {
+    } if (min >= 1) {
         endTimmer()
     }
     getSec.innerText = sec
@@ -144,7 +146,6 @@ let timmer = setInterval(function () {
 
 function endTimmer() {
     clearInterval(timmer)
-
     Swal.fire({
         title: 'Time is Over!',
         html: `
@@ -153,29 +154,12 @@ function endTimmer() {
            <em>thanks for participation!</em>
          `,
         icon: icon,
-        confirmButtonText: 'Quiz Again'
+        confirmButtonText: 'Go Back'
     }).then((score) => {
         if (score.isConfirmed) {
             location.reload();  // Page reload karega
         }
     });
-
-
-
-    // Swal.fire({
-    //     title: '⏰ Time is up!',
-    //     html: `
-    //       <strong>Your timer has ended.</strong><br>
-    //       Please click the button below to reload the page.<br><br>
-    //       <em>Thank you for waiting!</em>
-    //     `,
-    //     icon: 'info',
-    //     confirmButtonText: '🔄 Reload Page'
-    //   }).then((result) => {
-    //     if (result.isConfirmed) {
-    //       location.reload();
-    //     }
-    //   });
 
 
 }
