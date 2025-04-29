@@ -57,6 +57,11 @@ var questions = [
     },
 ];
 
+function startQuiz(){
+    let startQ = document.querySelector(".container")
+    startQ.
+}
+
 let ques = document.getElementById("ques");
 let opt1 = document.getElementById("opt1");
 let opt2 = document.getElementById("opt2");
@@ -65,98 +70,112 @@ let correct = document.getElementById("correct");
 let correctOpt = document.getElementById("correctOpt");
 let btn = document.getElementById("btn");
 let index = 0;
-let result = 0;
+let score = 0;
+let result;
+let icon;
+function nextQuestion() {
 
-
-function nextQuestion(){
-    
     var getInputs = document.getElementsByTagName('input')
-    if(correctOpt.checked){
-        result += 12.5;
-        console.log(result);
+    if (correctOpt.checked) {
+        score += 12.5;
+        let abc = Math.floor(score)
+        console.log(abc);
+    } if (score >= 70) {
+        result = "Passed"
+        icon = "success"
+    } else {
+        result = "faild"
+        icon = "error"
     }
 
-
-    for(var i=0; i < getInputs.length; i++){
+    for (var i = 0; i < getInputs.length; i++) {
         getInputs[i].checked = false
     }
-    
-    if(index > questions.length -1){
+
+    if (index > questions.length - 1) {
         Swal.fire({
-            title: "Quiz End!",
-            text: "Your Scores Is " + result,
-            icon: "success"
+            title: 'Quiz End!',
+            html: `
+               <strong>Your result is ${result}</strong><br>
+               your scrore is ${score}<br><br>
+               <em>thanks for participation!</em>
+             `,
+            icon: icon,
+            confirmButtonText: 'Quiz Again'
+        }).then((score) => {
+            if (score.isConfirmed) {
+                location.reload();  // Page reload karega
+            }
         });
-    }else{
-    ques.innerText = questions[index].question;
-    opt1.innerText = questions[index].option1;
-    opt2.innerText = questions[index].option2;
-    opt3.innerText = questions[index].option3;
-    correct.innerText = questions[index].correctOption
-    index++
+    } else {
+        ques.innerText = questions[index].question;
+        opt1.innerText = questions[index].option1;
+        opt2.innerText = questions[index].option2;
+        opt3.innerText = questions[index].option3;
+        correct.innerText = questions[index].correctOption
+        index++
 
     }
-    
+
     btn.disabled = true
 }
 nextQuestion()
 
-function btnWork(){
+function btnWork() {
     btn.disabled = false
 }
 
 
+let getMin = document.querySelector(".min")
+let getSec = document.querySelector(".sec")
+let min = 0;
+let sec = 0;
+let timmer = setInterval(function () {
+    sec++
+    if (sec > 59) {
+        min++
+        sec = 0;
+    } if (min >= 5) {
+        endTimmer()
+    }
+    getSec.innerText = sec
+    getMin.innerHTML = min;
+}, 100)
 
-// let result = 0;
-// var quiz = document.getElementsByName('quiz')
-// var htmlques = document.getElementById('ques')
-// var htmlopt1 = document.getElementById('opt1')
-// var htmlopt2 = document.getElementById('opt2')
-// var htmlopt3 = document.getElementById('opt3')
-// var correct = document.getElementById('correct')
-// var index = 0
-// var getBtn = document.getElementById('btn')
-// var score = 0
+function endTimmer() {
+    clearInterval(timmer)
 
-
-// function resultC(){
-//     result += 12.5;
-//     console.log(result);
-    
-// }
-// function nextQuestion() {
-    
-//     var getInputs = document.getElementsByTagName('input')
-//     for(var i=0; i < getInputs.length; i++){
-//         getInputs[i].checked = false
-//     }
-
-//     if (index > questions.length - 1) {
-//         Swal.fire({
-//             title: "Quiz End!",
-//             text: "Restart Quiz",
-//             icon: "success"
-//         });
-//     }
-    
-//     else {
-//         htmlques.innerText = questions[index].question
-//         htmlopt1.innerText = questions[index].option1
-//         htmlopt2.innerText = questions[index].option2
-//         htmlopt3.innerText = questions[index].option3
-//         correct.innerText = questions[index].correctOption
-//         index++
-//     }
-
-//     getBtn.disabled = true
+    Swal.fire({
+        title: 'Time is Over!',
+        html: `
+           <strong>Your result is ${result}</strong><br>
+           your scrore is ${score}<br><br>
+           <em>thanks for participation!</em>
+         `,
+        icon: icon,
+        confirmButtonText: 'Quiz Again'
+    }).then((score) => {
+        if (score.isConfirmed) {
+            location.reload();  // Page reload karega
+        }
+    });
 
 
-// }
 
-// nextQuestion()
+    // Swal.fire({
+    //     title: '⏰ Time is up!',
+    //     html: `
+    //       <strong>Your timer has ended.</strong><br>
+    //       Please click the button below to reload the page.<br><br>
+    //       <em>Thank you for waiting!</em>
+    //     `,
+    //     icon: 'info',
+    //     confirmButtonText: '🔄 Reload Page'
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       location.reload();
+    //     }
+    //   });
 
 
-// function btnWork(){
-   
-//     getBtn.disabled = false
-// }
+}

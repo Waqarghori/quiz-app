@@ -4,14 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body>
-    <center>
+
+    <section>
+        <div id="instructions" class="quiz-instructions">
+          <h2 class="quiz-heading">📝 Quiz Instructions</h2>
+          <hr class="quiz-divider" />
+          <ul class="quiz-list">
+            <li>Total Questions: <strong>8</strong> multiple-choice questions</li>
+            <li>Each question carries <strong>12 points</strong> (Max score: <strong>96</strong>)</li>
+            <li>To pass, score at least <strong>70 points</strong></li>
+            <li>You have <strong>1 minute</strong> to complete the quiz</li>
+            <li>If the timer ends, the quiz auto-submits and shows your result</li>
+            <li>If you finish early, results will appear instantly</li>
+          </ul>
+          <div class="quiz-button-container">
+            <button onclick="startQuiz()" class="start-quiz-btn">Start Quiz</button>
+          </div>
+        </div>
+      </section>
+      
+
+    <div class="container">
         <h1>Quiz Application SMIT</h1>
         <hr><br>
-
+        <div>
+            <span class="min">00</span>:<span class="sec">00</span>
+        </div>
         <div>
             <div>
                 <p id="ques"></p>
@@ -42,7 +65,7 @@
         <button id="btn" disabled onclick="nextQuestion()">Next</button>
 
 
-    </center>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
