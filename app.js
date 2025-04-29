@@ -148,7 +148,7 @@ function startTimer(){
     getMin.innerHTML = min;
     console.log("hi");
     
-}, 100)
+}, 1000)
 }
 
 function endTimmer() {
