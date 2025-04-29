@@ -122,9 +122,10 @@
   }
 
   .timer {
-    position: absolute;
-    top: 100px;
-    right: 50px;
+    /* position: absolute;
+    bottom: 100px;
+    right: 50px; */
+    display: flex;
     background-color: var(--timer-bg);
     color: var(--timer-color);
     padding: 12px 20px;
