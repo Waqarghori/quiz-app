@@ -62,6 +62,8 @@ function startQuiz(){
     let quizIntr = document.getElementById("quizInt")
     startQ.style.display = "block"
     quizIntr.style.display = "none"
+    startTimer()
+    
 }
 
 let ques = document.getElementById("ques");
@@ -106,7 +108,7 @@ function nextQuestion() {
             confirmButtonText: 'Go Back'
         }).then((score) => {
             if (score.isConfirmed) {
-                location.reload();  // Page reload karega
+                location.reload();
             }
         });
     } else {
@@ -132,7 +134,9 @@ let getMin = document.querySelector(".min")
 let getSec = document.querySelector(".sec")
 let min = 0;
 let sec = 0;
-let timmer = setInterval(function () {
+let timmerVar;
+function startTimer(){
+  timmerVar = setInterval(function () {
     sec++
     if (sec > 59) {
         min++
@@ -142,10 +146,13 @@ let timmer = setInterval(function () {
     }
     getSec.innerText = sec
     getMin.innerHTML = min;
+    console.log("hi");
+    
 }, 100)
+}
 
 function endTimmer() {
-    clearInterval(timmer)
+    clearInterval(timmerVar)
     Swal.fire({
         title: 'Time is Over!',
         html: `
@@ -157,7 +164,7 @@ function endTimmer() {
         confirmButtonText: 'Go Back'
     }).then((score) => {
         if (score.isConfirmed) {
-            location.reload();  // Page reload karega
+            location.reload();
         }
     });
 

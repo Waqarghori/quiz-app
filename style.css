@@ -6,8 +6,6 @@
     --bg-color: #ffffff;
     --correct-color: #2ecc71;
     --error-color: #e74c3c;
-    --timer-bg: #1e272e;
-    --timer-color: #f1c40f;
   }
 
   * {
@@ -85,29 +83,28 @@
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     position: relative;
   }
+  
   .timer {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #111;
-    color: var(--timer-color);
-    padding: 15px 35px;
-    border-radius: 12px;
-    font-size: 32px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-shadow: 0 0 5px #f1c40f, 0 0 10px #f1c40f;
-    border: 2px solid var(--accent-color);
-    box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    margin: 20px auto;
+    letter-spacing: 2px;
     transition: all 0.3s ease-in-out;
   }
   
-  .timer:hover {
-    box-shadow: 0 0 20px rgba(241, 196, 15, 0.9);
-    background-color: #000;
+  .timer span {
+    min-width: 40px;
+    text-align: center;
   }
-  
   
   
   
@@ -126,14 +123,14 @@
 
   .timer {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 100px;
+    right: 50px;
     background-color: var(--timer-bg);
     color: var(--timer-color);
     padding: 12px 20px;
-    border-radius: 50px;
+    border-radius: 10px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 24px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
