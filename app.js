@@ -140,7 +140,7 @@ function startTimer(){
     if (sec > 59) {
         min++
         sec = 0;
-    } if (min >= 1) {
+    } if (min >= 10) {
         endTimmer()
     }
     getSec.innerText = sec

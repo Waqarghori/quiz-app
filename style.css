@@ -250,7 +250,7 @@
   label {
     font-size: 13px;
     padding: 8px 10px;
-    display: block;
+    /* display: block; */
     margin-bottom: 10px;
   }
 
